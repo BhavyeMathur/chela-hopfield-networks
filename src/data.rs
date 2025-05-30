@@ -22,6 +22,15 @@ pub fn load_data<P: AsRef<Path>>(path: P) -> NdArray<'static, f64> {
     img.reshape([1, size])
 }
 
+pub fn save_ndarray_as_png(matrix: &NdArray<f64>, width: u32, height: u32, path: impl AsRef<Path>) {
+    let mut data = matrix - matrix.min();
+    data /= matrix.max() - matrix.min();
+    data *= 255.0;
+
+    let data = data.astype().into_data_vector();
+    save_png(data, width, height, path);
+}
+
 pub fn save_png(data: Vec<u8>, width: u32, height: u32, path: impl AsRef<Path>) {
     assert_eq!(data.len(), (width * height) as usize, "data size mismatch");
     
