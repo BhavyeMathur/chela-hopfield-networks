@@ -3,7 +3,7 @@
 | ![](model.png) | ![](output/burger.gif) | ![](output/popcorn.gif) |
 |----------------|------------------------|------------------------|
 
-This is a simple Rust implementation of a Hopfield Network with Hebbian learning rules using my linear algebra and machine learning crate, [Chela](https://github.com/BhavyeMathur/chela).
+This is a simple Rust implementation of a Hopfield Network with Hebbian learning rules using my linear algebra and machine learning crate, [Chela](https://github.com/BhavyeMathur/chela). See a C++ implementation of [Boltzmann Machines & Hopfield Networks](https://github.com/BhavyeMathur/boltzmann-machines-and-hopfield-networks).
 
 ## Installation & Usage
 
@@ -67,18 +67,15 @@ $$\text{state}_i= \begin{cases}
 where $\text{weights}_i$ refers to column $i$ of the weight matrix.
 
 ```rust
-// random number generator to pick the neuron to update
-let mut rng = rand::rng();
+let mut rng = rand::rng();  // random number generator to pick neurons
 let uniform = Uniform::try_from(0..p).unwrap();
 
 for _ in 0..steps {
-    // randomly select a neuron
-    let neuron = uniform.sample(&mut rng);
+    let neuron = uniform.sample(&mut rng);  // randomly select a neuron
     
     let weight_col = weights.slice([neuron])
     let activation = weight_col.dot(state);
-    
-    // update the neuron
+
     self.state[neuron] =
         if activation.value() >= 0.0 {
             1.0;
