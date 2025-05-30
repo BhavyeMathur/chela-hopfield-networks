@@ -5,6 +5,18 @@
 
 This is a simple Rust implementation of a Hopfield Network with Hebbian learning rules using my linear algebra and machine learning crate, [Chela](https://github.com/BhavyeMathur/chela).
 
+## Installation & Usage
+
+Clone this repository and run ``cargo run --release``. To create the gifs shown above (make sure you have Python installed), run
+
+```
+pip install -r requirements.txt
+python output/gif_generator.py
+```
+
+This should output `model.png`, `output.png`, and `output.gif`. You can change the input image inside [src/main.rs](src/main.rs)
+
+
 ## Hopfield Networks
 
 A Hopfield Network is described by a 2D matrix of weights and a 1D vector representing its current state. We can represent this in Chela as follows,

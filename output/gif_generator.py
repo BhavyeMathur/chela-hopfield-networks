@@ -1,8 +1,8 @@
 from PIL import Image
 import os
 
-input_folder = "."
-output_file = "../output.gif"
+input_folder = "output"
+output_file = "output.gif"
 fps = 30
 
 images = sorted([img for img in os.listdir(input_folder) if img.endswith(".png")], key=lambda x: int(x[:-4]))

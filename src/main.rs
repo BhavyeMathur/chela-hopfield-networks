@@ -57,4 +57,5 @@ fn main() {
         model.update_state(25);
         model.save_state(format!("output/{}.png", i))
     }
+    model.save_state("output.png")
 }
